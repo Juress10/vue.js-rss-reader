@@ -29,10 +29,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm install
-    - run: npm install -g quasar-cli
+    - run: npm install -g @quasar/cli
     # Runs a set of commands using the runners shell
     - name: quasar version
-    - run: quasar -v
+      run: quasar -v
 
     - name: Build app
       run: |

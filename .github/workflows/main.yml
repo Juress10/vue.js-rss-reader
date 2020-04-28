@@ -37,4 +37,10 @@ jobs:
     - name: Build app
       run: |
         quasar build
-        echo command 2.
+    
+    - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@releases/v3
+        with:
+          ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
+          BRANCH: master # The branch the action should deploy to.
+          FOLDER: dist/spa # The folder the action should deploy.

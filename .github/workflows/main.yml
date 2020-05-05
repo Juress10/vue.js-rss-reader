@@ -38,13 +38,20 @@ jobs:
       run: |
         quasar build
 
+    - name: Commit files
+      run: |
+        git add dist
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git commit -m "pages branch add" -a
+
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
-        branch: master
+        branch: pages
         force: true
         github_token: ${{ secrets.ACCESS_TOKEN }}
-        OLDER: dist/spa
+        FOLDER: dist/spa
     
     #zly deploy
     #    name: Deploy 

@@ -1,21 +1,12 @@
-# This is a basic workflow to help you get started with Actions
-
 name: rssReaderAction
-
-# Controls when the action will run. Triggers the workflow on push or pull request
-# events but only for the master branch
 on:
   push:
     branches: [ master ]
   pull_request:
     branches: [ master ]
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
-    
     runs-on: ubuntu-latest
 
     strategy:
@@ -30,7 +21,6 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - run: npm install
     - run: npm install -g @quasar/cli
-    # Runs a set of commands using the runners shell
     - name: quasar version
       run: quasar -v
 
@@ -41,9 +31,9 @@ jobs:
     - name: Commit files
       run: |
         git add dist
-        git config --local user.email "action@github.com"
+        git config --local user.email "juraj@github.com"
         git config --local user.name "GitHub Action"
-        git commit -m "pages branch add" -a
+        git commit -m "pages branch" -a
 
     - name: Push changes
       uses: ad-m/github-push-action@master
@@ -52,11 +42,3 @@ jobs:
         force: true
         github_token: ${{ secrets.ACCESS_TOKEN }}
         FOLDER: dist/spa
-    
-    #zly deploy
-    #    name: Deploy 
-    #    uses: JamesIves/github-pages-deploy-action@releases/v3
-    #    with:
-    #      ACCESS_TOKEN: ${{ secrets.ACCESS_TOKEN }}
-    #      BRANCH: master # The branch the action should deploy to.
-    #      FOLDER: dist/spa # The folder the action should deploy.

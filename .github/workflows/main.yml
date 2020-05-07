@@ -28,6 +28,7 @@ jobs:
 
     - name: Commit files
       run: |
+        git rm -r .
         git add dist
         git config --local user.email "juraj@github.com"
         git config --local user.name "GitHub Action"
@@ -39,4 +40,3 @@ jobs:
         branch: master
         force: true
         github_token: ${{ secrets.ACCESS_TOKEN }}
-        FOLDER: dist/spa

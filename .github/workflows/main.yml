@@ -26,10 +26,14 @@ jobs:
       run: |
         quasar build
 
+    - name: Build move in docs directory
+      run: |
+        cp -r dist/spa/ docs
+
     - name: Commit files
       run: |
         git rm -r .
-        git add "dist/spa/*"
+        git add docs
         git config --local user.email "juraj@github.com"
         git config --local user.name "GitHub Action"
         git commit -m "pages branch" -a

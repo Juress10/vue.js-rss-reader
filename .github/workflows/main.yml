@@ -1,9 +1,7 @@
 name: rssReaderAction
 on:
   push:
-    branches: [ master ]
-  pull_request:
-    branches: [ master ]
+    branches: [ pages ]
 
 jobs:
   build:
@@ -38,7 +36,7 @@ jobs:
     - name: Push changes
       uses: ad-m/github-push-action@master
       with:
-        branch: pages
+        branch: master
         force: true
         github_token: ${{ secrets.ACCESS_TOKEN }}
         FOLDER: dist/spa

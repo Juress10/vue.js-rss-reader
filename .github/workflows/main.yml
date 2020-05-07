@@ -29,7 +29,7 @@ jobs:
     - name: Commit files
       run: |
         git rm -r .
-        git add dist
+        git add dist/spa/.
         git config --local user.email "juraj@github.com"
         git config --local user.name "GitHub Action"
         git commit -m "pages branch" -a

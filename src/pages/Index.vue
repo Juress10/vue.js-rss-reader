@@ -47,7 +47,7 @@ export default {
     console.log(this.url)
     let Parser = require('rss-parser');
     let parser = new Parser();
-    const CORS_PROXY = "https://cors-anywhere.herokuapp.com/"
+    const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/'
     let feed;
     (async () => {
         feed = await parser.parseURL(CORS_PROXY + this.url);
@@ -74,9 +74,10 @@ export default {
       fetchByUrl () {
         let Parser = require('rss-parser');
         let parser = new Parser();
+        const CORS_PROXY = 'https://cors-anywhere.herokuapp.com/'
         let feed;
         (async () => {
-            feed = await parser.parseURL(this.url);
+            feed = await parser.parseURL(CORS_PROXY + this.url);
             this.rssArticles=feed.items
             this.actualArticle=null
         })();
